@@ -136,7 +136,8 @@
                       <!--ENTRADA PARA EL USUARIO-->
                       <div class="form-group">
                           <label>Nombre de usuario: <code>*</code></label>
-                          <input type="text" class="form-control form-control-border" name="nuevoUsuario" id="nuevoUsuario" required>
+                          <input type="text" class="form-control form-control-border" name="nuevoUsuario"
+                              id="nuevoUsuario" required>
                       </div>
 
                       <!--ENTRADA PARA EL PASSWORD-->
@@ -148,7 +149,8 @@
                       <!--ENTRADA PARA EL PERFIL-->
                       <div class="form-group">
                           <label>Perfil: <code>*</code></label>
-                          <select class="custom-select form-control-border" name="nuevoPerfil">
+                          <select class="form-control-boder select2 select2-danger"
+                              data-dropdown-css-class="select2-danger" name="nuevoPerfil">
                               <option selected>Seleccionar perfil</option>
                               <option value="Administrador">Administrador</option>
                               <option value="Ventas">Ventas</option>
@@ -202,33 +204,32 @@
                       <!--ENTRADA PARA EL NOMBRE-->
                       <div class="form-group">
                           <label>Nombre: <code>*</code></label>
-                          <input type="text" class="form-control form-control-border" name="editarNombre" 
-                          value="" id="editarNombre" required>
+                          <input type="text" class="form-control form-control-border" name="editarNombre" value=""
+                              id="editarNombre" required>
                       </div>
 
                       <!--ENTRADA PARA EL USUARIO-->
                       <div class="form-group">
                           <label>Nombre de usuario: <code>*</code></label>
-                          <input type="text" class="form-control form-control-border" name="editarUsuario" id="editarUsuario" value=""readonly>
+                          <input type="text" class="form-control form-control-border" name="editarUsuario"
+                              id="editarUsuario" value="" readonly>
                       </div>
 
                       <!--ENTRADA PARA EL PASSWORD-->
                       <div class="form-group">
                           <label>Contraseña: <code>*</code></label>
-                          <input type="password" class="form-control form-control-border" name="editarPassword" placeholder="Escribir nueva contraseña">
+                          <input type="password" class="form-control form-control-border" name="editarPassword"
+                              placeholder="Escribir nueva contraseña">
                           <input type="hidden" id="passwordActual" name="passwordActual">
-                        </div>
-
-                      <!--ENTRADA PARA EL PERFIL-->
-                      <div class="form-group">
-                          <label>Perfil: <code>*</code></label>
-                          <select class="custom-select form-control-border" name="editarPerfil">
-                              <option id="editarPerfil"></option>
-                              <option value="Administrador">Administrador</option>
-                              <option value="Ventas">Ventas</option>
-                              <option value="Especial">Especial</option>
-                          </select>
                       </div>
+
+                      <select class="form-control-boder select2 select2-danger" data-dropdown-css-class="select2-danger"
+                          name="editarPerfil" id="editarPerfil">
+                          <option value="">Seleccionar perfil</option>
+                          <option value="Administrador">Administrador</option>
+                          <option value="Ventas">Ventas</option>
+                          <option value="Especial">Especial</option>
+                      </select>
 
 
                       <!--ENTRADA PARA LA FOTO-->
@@ -236,7 +237,8 @@
                           <div class="panel">Seleccionar foto</div>
                           <input type="file" name="editarFoto" class="nuevaFoto">
                           <p class="help-block">Peso máximo 2 MB</p>
-                          <img src="vistas/dist/img/usuarios/defecto.jpg" class="img-thumbnail previsualizar" width="100px">
+                          <img src="vistas/dist/img/usuarios/defecto.jpg" class="img-thumbnail previsualizar"
+                              width="100px">
                           <input type="hidden" name="fotoActual" id="fotoActual">
                       </div>
                       </select>

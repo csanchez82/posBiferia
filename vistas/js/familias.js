@@ -19,7 +19,7 @@ $(".btnEditarFamilia").click(function(){
             
             //console.log("respuesta",respuesta);
             
-            $("#editarDepartamentoID").val(respuesta["departamento_id"]);
+            $("#editarDepartamentoID").val(respuesta["departamento_id"]).trigger('change'); 
             $("#editarFamilia").val(respuesta["familia"]);
             $("#editarDescripcion").val(respuesta["descripcion"]);
             $("#idFamilia").val(respuesta["id"]);

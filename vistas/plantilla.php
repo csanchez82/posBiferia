@@ -24,7 +24,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POS - La Bifería</title>
-    <link rel="shortcut icon" href="vistas/dist/img/plantilla/593.png" type="image/x-icon">
+    <link rel="shortcut icon" href="vistas/dist/img/plantilla/bife.png" type="image/x-icon">
 
 
     <!-- Google Font: Source Sans Pro -->
@@ -60,16 +60,16 @@ session_start();
     <!--SweetAlert2-->
     <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
     <!-- DataTables -->
-    <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrcss">
+    <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.css">
     <link rel="stylesheet" href="vistas/plugins/datatables-buttons/css/buttons.bootstrap4.css">
 
 
     <!--SCRIPTS-->
-    <!-- AdminLTE App -->
-    <script src="vistas/dist/js/adminlte.js"></script>
     <!-- jQuery -->
     <script src="vistas/plugins/jquery/jquery.js"></script>
+    <!-- AdminLTE App -->
+    <script src="vistas/dist/js/adminlte.js"></script>
     <!-- Bootstrap 4 -->
     <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- bs-custom-file-input -->
@@ -85,10 +85,12 @@ session_start();
     <script src="vistas/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
     <script src="vistas/plugins/jszip/jszip.js"></script>
     <script src="vistas/plugins/pdfmake/pdfmake.js"></script>
-    <script src="vistas/plugins/pdfmake/vfs_fojs"></script>
+    <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
     <script src="vistas/plugins/datatables-buttons/js/buttons.html5.js"></script>
     <script src="vistas/plugins/datatables-buttons/js/buttons.print.js"></script>
     <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.js"></script>
+    <!-- Select2 -->
+    <script src="vistas/plugins/select2/js/select2.full.min.js"></script>
 
 </head>
 
@@ -99,8 +101,13 @@ session_start();
 
 
 
+
+
+
 <body class="hold-transition dark-mode sidebar-mini">
     <!-- Site wrapper -->
+
+
 
 
     <!--=====================================
@@ -174,17 +181,17 @@ CUERPO DOCUMENTO
 
  ?>
 
-        <script src="vistas/js/usuarios.js"></script>
         <script src="vistas/js/departamentos.js"></script>
         <script src="vistas/js/familias.js"></script>
-        <script src="vistas/js/varios.js"></script>
+        <script src="vistas/js/productos.js"></script>
         <script src="vistas/js/proveedores.js"></script>
+        <script src="vistas/js/varios.js"></script>
+        <script src="vistas/js/usuarios.js"></script>
         <script>
         $(function() {
             bsCustomFileInput.init();
         });
-        </script>
-        <script>
+
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,

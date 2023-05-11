@@ -109,7 +109,8 @@
               <!--ENTRADA PARA EL PERFIL-->
               <div class="form-group">
                   <label>Perfil: <code>*</code></label>
-                  <select class="custom-select form-control-border">
+                  <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger">
                     <option selected>Seleccionar perfil</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Ventas">Ventas</option>

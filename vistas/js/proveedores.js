@@ -26,8 +26,8 @@ $(".btnEditarProveedor").click(function(){
              $('#editarNombre').val(respuesta["nombre"]);
              $('#editarReferencia').val(respuesta["referencia"]);
              $('#editarRFC').val(respuesta["rfc"]);
-             $('#editarPagoDefecto').val(respuesta["pagoDefecto"]);
-             $('#editarBanco').val(respuesta["banco"]);
+             $('#editarPagoDefecto').val(respuesta["pagoDefecto"]).trigger('change');
+             $('#editarBanco').val(respuesta["banco"]).trigger('change');             
              $('#editarCuenta').val(respuesta["numeroCuenta"]);
              $('#editarDiasCredito').val(respuesta["diasCredito"]);
              $('#editarCLABE').val(respuesta["clabe"]);
@@ -62,7 +62,7 @@ $(".btnEditarProveedor").click(function(){
 
 })
 
- //ELIMINAR CLIENTE
+ //ELIMINAR PROVEEDOR
  $(".btnEliminarProveedor").click(function(){
      var idProveedor = $(this).attr("idProveedor");   
      swal({

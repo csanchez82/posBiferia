@@ -125,13 +125,13 @@
                         <!--REFERENCIA-->
                         <div class="col-md-4">
                             <label>
-                                Referencia: <code><i class="fas fa-question fa-xs"></i></code></label>
+                                Referencia: <code></code></label>
                             <input type="text" class="form-control form-control-border" name="nuevaReferencia">
                         </div>
 
                         <div class="col-md-4">
                             <label>
-                                RFC: <code><i class="fas fa-question fa-xs"></i></code></label>
+                                RFC: <code></code></label>
                             <input type="text" class="form-control form-control-border" name="nuevoRFC"
                                 oninput="this.value = this.value.toUpperCase()" required>
                         </div>
@@ -139,7 +139,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Forma de pago por defecto: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="nuevoPagoDefecto">
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="nuevoPagoDefecto">
                                     <option selected>Seleccionar si por el momento no se tiene el dato</option>
                                     <option value="01-Efectivo">01-Efectivo</option>
                                     <option value="02-Cheque nominativo">02-Cheque nominativo</option>
@@ -180,7 +181,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Banco: <code>*</code></label>
-                                <select class="custom-select form-control-border " name="nuevoBanco">
+                                <select class="custom-select form-control-border select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" style="width: 100%;"> name="nuevoBanco">
                                     <option value="Azteca">Azteca</option>
                                     <option value="Afirme">Afirme</option>
                                     <option value="Banamex">Banamex</option>
@@ -199,8 +201,6 @@
                                     <option value="Scotiabank">Scotiabank</option>
                                     <option value="Ve por Más">Ve por Más</option>
                                     <option value="Sin banco" selected>Sin banco</option>
-                                </select>
-
                                 </select>
                             </div>
                         </div>
@@ -327,7 +327,8 @@
 
                             <div class="form-group">
                                 <label>País: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="nuevoPais">
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="nuevoPais">
                                     <option selected>Seleccionar</option>
                                     <option value="México">México</option>
                                     <option value="Estados Unidos">Estados Unidos</option>
@@ -470,7 +471,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Forma de pago por defecto: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="editarPagoDefecto"
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="editarPagoDefecto"
                                     id="editarPagoDefecto">
                                     <option selected>Seleccionar</option>
                                     <option value="01-Efectivo">01-Efectivo</option>
@@ -506,7 +508,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Banco: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="editarBanco" id="editarBanco">
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="editarBanco" id="editarBanco">
                                     <option selected>Seleccionar</option>
                                     <option value="Sin banco">Sin banco</option>
                                     <option value="BBVA">BBVA</option>
@@ -656,7 +659,8 @@
 
                             <div class="form-group">
                                 <label>País: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="editarPais" id="editarPais">
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="editarPais" id="editarPais">
                                     <option selected>Seleccionar</option>
                                     <option value="México">México</option>
                                     <option value="Estados Unidos">Estados Unidos</option>

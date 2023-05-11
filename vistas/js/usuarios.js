@@ -70,8 +70,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 			
 			$("#editarNombre").val(respuesta["nombre"]);
 			$("#editarUsuario").val(respuesta["usuario"]);
-			$("#editarPerfil").html(respuesta["perfil"]);
-			$("#editarPerfil").val(respuesta["perfil"]);
+			$("#editarPerfil").val(respuesta["perfil"]).trigger('change');
 			$("#fotoActual").val(respuesta["foto"]);
 
 			$("#passwordActual").val(respuesta["password"]);
