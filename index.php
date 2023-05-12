@@ -2,6 +2,7 @@
 
 require_once "controladores/departamentos.controlador.php";
 require_once "controladores/familias.controlador.php";
+require_once "controladores/familiasPorDepartamentos.controlador.php";
 require_once "controladores/plantilla.controlador.php";
 require_once "controladores/productos.controlador.php";
 require_once "controladores/proveedores.controlador.php";

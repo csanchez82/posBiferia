@@ -152,13 +152,13 @@
                             <div class="form-group">
                                 <label>Seleccionar departamento <code>*</code></label>
                                 <select class="form-control-boder select2 select2-danger"
-                                    data-dropdown-css-class="select2-danger" name="nuevoDepartamento">
+                                    data-dropdown-css-class="select2-danger" name="nuevoDepartamento"
+                                    id="departamentoSelect">
                                     <option value="">Lista de departamentos</option>
                                     <?php
                               $item = null;
                               $valor = null;
                               $departamentos = ControladorDepartamentos::ctrMostrarDepartamentos($item, $valor);
-
                               foreach ($departamentos as $key => $value) {
                                   echo '<option value="'.$value["id"].'">'.$value["departamento"].'</option>';
                               }
@@ -170,7 +170,7 @@
                             <div class="form-group">
                                 <label>Seleccionar familia <code>*</code></label>
                                 <select class="form-control-boder select2 select2-danger"
-                                    data-dropdown-css-class="select2-danger" name="nuevaFamilia">
+                                    data-dropdown-css-class="select2-danger" name="nuevaFamilia" id="familiaSelect">
                                     <option value="">Lista de familias</option>
                                     <?php
                               $item = null;
@@ -190,7 +190,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>IVA: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="nuevoIVA">
+                                <select class="form-control-boder select2 select2-danger" name="nuevoIVA">
                                     <option selected>Seleccionar</option>
                                     <option value="0%">0%</option>
                                     <option value="8%">8%</option>
@@ -203,7 +203,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>IEPS: <code>*</code></label>
-                                <select class="custom-select form-control-border" name="nuevoIEPS" required>
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="nuevoIEPS" required>
                                     <option selected>Seleccionar</option>
                                     <option value="0%">0%</option>
                                     <option value="3%">3%</option>

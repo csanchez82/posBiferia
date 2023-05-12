@@ -187,6 +187,7 @@ CUERPO DOCUMENTO
         <script src="vistas/js/proveedores.js"></script>
         <script src="vistas/js/varios.js"></script>
         <script src="vistas/js/usuarios.js"></script>
+        <script src="vistas/js/familiasPorDepartamento.js"></script>
         <script>
         $(function() {
             bsCustomFileInput.init();
