@@ -54,8 +54,8 @@ class ControladorProveedores{
 					"nombre" => $_POST["nuevoNombre"],
 					"referencia" => $_POST["nuevaReferencia"],
 					"rfc" => $_POST["nuevoRFC"],
-					"pagoDefecto" => $_POST["nuevoPagoDefecto"],
-					"banco" => $_POST["nuevoBanco"],
+					"formapagoId" => $_POST["nuevoPagoDefecto"],
+					"bancoId" => $_POST["nuevoBanco"],
 					"numeroCuenta" => $_POST["nuevaCuenta"],
 					"clabe" => $_POST["nuevaCLABE"],
 					"swift" => $_POST["nuevoSwift"],
@@ -177,8 +177,8 @@ class ControladorProveedores{
 				   				"nombre"=>$_POST["editarNombre"],
 				   				"referencia"=>$_POST["editarReferencia"],
 								"rfc"=>$_POST["editarRFC"],
-					 			"pagoDefecto"=>$_POST["editarPagoDefecto"],
-					 			"banco"=>$_POST["editarBanco"],
+					 			"formapagoId"=>$_POST["editarPagoDefecto"],
+					 			"bancoId"=>$_POST["editarBanco"],
 					 			"numeroCuenta"=>$_POST["editarCuenta"],
 					 			"clabe"=>$_POST["editarCLABE"],
 					 			"swift"=>$_POST["editarSwift"],
@@ -262,30 +262,47 @@ class ControladorProveedores{
 
 		if (isset($_GET["idProveedor"])) {
 			
-			$tabla="proveedores";
-			$datos=$_GET["idProveedor"];
+			$tablaProveedores="proveedores";
+			$tablaProductos="productos"; // Asegúrate de reemplazar esto con el nombre real de tu tabla de productos
+			$idProveedor=$_GET["idProveedor"];
 
-			$respuesta=ModeloProveedor::mdlEliminarProveedor($tabla,$datos);
-
-			echo'<script>
-
+			// Verificar si el proveedor tiene productos asociados
+			$numeroProductos = ModeloProveedor::mdlVerificarProductos($tablaProductos, $idProveedor);
+			
+			if ($numeroProductos > 0) {
+				// El proveedor tiene productos asociados, no se puede eliminar
+				echo'<script>
 					swal({
-						  type: "success",
-						  title: "El proveedor ha sido eliminado.",
+						  type: "error",
+						  title: "El proveedor no puede ser eliminado porque tiene productos asociados.",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
-
-									window.location = "proveedores";
-
+										window.location = "proveedores";
 									}
 								})
-
 					</script>';
-
+			} else {
+				// El proveedor no tiene productos asociados, se puede eliminar
+				$respuesta=ModeloProveedor::mdlEliminarProveedor($tablaProveedores,$idProveedor);
+	
+				if($respuesta == "ok"){
+					echo'<script>
+						swal({
+							  type: "success",
+							  title: "El proveedor ha sido eliminado.",
+							  showConfirmButton: true,
+							  confirmButtonText: "Cerrar"
+							  }).then(function(result){
+										if (result.value) {
+											window.location = "proveedores";
+										}
+									})
+						</script>';
+				}
+			}
 		}
-
-
 	}
+
 }

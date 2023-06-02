@@ -21,33 +21,37 @@ class ControladorProductos{
 				$nuevoOcultar = isset($_POST['nuevoOcultar']) ? 1 : 0;
 				$nuevoIncluyeImpuestos = isset($_POST['nuevoIncluyeImpuestos']) ? 1 : 0;
 				$nuevoObligar = isset($_POST['nuevoObligar']) ? 1 : 0;
+
+
+				
 	
 				$datos = array(
-                    "nombre" => $_POST["nuevoNombre"],
-                    "tipo" => $_POST["nuevoTipo"],
-                    "descripcion" => $_POST["nuevaDescripcion"],
-                    "proveedor_id" => $_POST["nuevoProveedor"],
-                    "departamento_id" => $_POST["nuevoDepartamento"], 
-                    "familia_id" => $_POST["nuevaFamilia"],
-                    "iva"=> $_POST["nuevoIVA"],
-                    "ieps" => $_POST["nuevoIEPS"],
-					 "minInventario" => $_POST["nuevoMinimo"],
-					 "maxInventario" => $_POST["nuevoMaximo"],
-					 "existencia" => $_POST["nuevoInventario"],  
-					 "merma" => $_POST["nuevaMerma"],
-					 "granel" => $nuevoGranel,
-					 "ocultar" => $nuevoOcultar,
-					 "incluyeImpuestos" => $nuevoIncluyeImpuestos,
-					 "codBarras" => $_POST["nuevoCod"],
-					 "codAlterno" => $_POST["nuevoCodAlterno"],
-					 "unidadMedida" => $_POST["nuevaUnidad"],
-					 "clave" => $_POST["nuevaClave"],
-					 "costo" => $_POST["nuevoCosto"],
-					 "precio1" => $_POST["nuevoPrecio1"],
-					 "precio2" => $_POST["nuevoPrecio2"],
-                     "precio3" => $_POST["nuevoPrecio3"],
-					 "obligar" => $nuevoObligar
+					"nombre" => $_POST["nuevoNombre"],
+					"tipo" => $_POST["nuevoTipo"],
+					"descripcion" => $_POST["nuevaDescripcion"],
+					"proveedor_id" => $_POST["nuevoProveedor"],
+					"departamento_id" => $_POST["nuevoDepartamento"],
+					"familia_id" => $_POST["nuevaFamilia"],
+					"minInventario" => $_POST["nuevoMinimo"],
+					"maxInventario" => $_POST["nuevoMaximo"],
+					"inventario" => $_POST["nuevoInventario"],
+					"merma" => $_POST["nuevaMerma"],
+					"granel" => $nuevoGranel,
+					"ocultar" => $nuevoOcultar,
+					"incluyeImpuestos" => $nuevoIncluyeImpuestos,
+					"codBarras" => $_POST["nuevoCod"],
+					"codAlterno" => $_POST["nuevoCodAlterno"],
+					"unidadMedida_id" => $_POST["nuevaUnidad"],
+					"clave_id" => $_POST["nuevoProdServ"],
+					"costo" => $_POST["nuevoCosto"],
+					"precio1" => $_POST["nuevoPrecio1"],
+					"precio2" => $_POST["nuevoPrecio2"],
+					"precio3" => $_POST["nuevoPrecio3"],
+					"obligar" => $nuevoObligar,
+					"iva_id" => $_POST["nuevoIVA"],
+					"ieps_id" => $_POST["nuevoIEPS"]
 				);
+				
 	
 				$respuesta = ModeloProductos::mdlIngresarProducto($tabla, $datos);
 
@@ -136,32 +140,33 @@ class ControladorProductos{
 				$editarObligar = isset($_POST['editarObligar']) ? 1 : 0;
 	
 				$datos = array(
-					"id" => $_POST["id"],
+					"id" => $_POST["idProducto"],
                     "nombre" => $_POST["editarNombre"],
-                    "tipo" => $_POST["editarTipo"],
-                    "descripcion" => $_POST["editarDescripcion"],
-                    "proveedor_id" => $_POST["editarProveedor"],
-                    "departamento_id" => $_POST["editarDepartamento"], 
-                    "familia_id" => $_POST["editarFamilia"],
-                    "iva"=> $_POST["editarIVA"],
-                    "ieps" => $_POST["editarIEPS"],
-					 "minInventario" => $_POST["editarMinimo"],
-					 "maxInventario" => $_POST["editarMaximo"],
-					 "existencia" => $_POST["editarInventario"],  
-					 "merma" => $_POST["editarMerma"],
-					 "granel" => $editarGranel,
-					 "ocultar" => $editarOcultar,
-					 "incluyeImpuestos" => $editarIncluyeImpuestos,
-					 "codBarras" => $_POST["editarCod"],
-					 "codAlterno" => $_POST["editarCodAlterno"],
-					 "unidadMedida" => $_POST["editarUnidad"],
-					 "clave" => $_POST["editarClave"],
-					 "costo" => $_POST["editarCosto"],
-					 "precio1" => $_POST["editarPrecio1"],
-					 "precio2" => $_POST["editarPrecio2"],
-                     "precio3" => $_POST["editarPrecio3"],
-					 "obligar" => $editarObligar
+					"tipo" => $_POST["editarTipo"],
+					"descripcion" => $_POST["editarDescripcion"],
+					"proveedor_id" => $_POST["editarProveedor"],
+					"departamento_id" => $_POST["editarDepartamento"],
+					"familia_id" => $_POST["editarFamilia"],
+					"minInventario" => $_POST["editarMinimo"],
+					"maxInventario" => $_POST["editarMaximo"],
+					"inventario" => $_POST["editarInventario"],
+					"merma" => $_POST["editarMerma"],
+					"granel" => $editarGranel,
+					"ocultar" => $editarOcultar,
+					"incluyeImpuestos" => $editarIncluyeImpuestos,
+					"codBarras" => $_POST["editarCod"],
+					"codAlterno" => $_POST["editarCodAlterno"],
+					"unidadMedida_id" => $_POST["editarUnidad"],
+					"clave_id" => $_POST["editarProdServ"],
+					"costo" => $_POST["editarCosto"],
+					"precio1" => $_POST["editarPrecio1"],
+					"precio2" => $_POST["editarPrecio2"],
+					"precio3" => $_POST["editarPrecio3"],
+					"obligar" => $editarObligar,
+					"iva_id" => $_POST["editarIVA"],
+					"ieps_id" => $_POST["editarIEPS"]
 				);
+				
 	
 				$respuesta = ModeloProductos::mdlEditarProducto($tabla, $datos);
 

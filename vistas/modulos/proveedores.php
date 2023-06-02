@@ -1,3 +1,14 @@
+<?php
+ // Requiere la conexión a la base de datos
+ require_once 'modelos/conexion.php';
+
+ // Crea una nueva instancia de la clase Conexion
+ $conexion = new Conexion();
+
+ // Utiliza el método conectar para obtener la conexión a la base de datos
+ $db = $conexion->conectar();
+ ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -108,19 +119,11 @@
 
 
                         <div class="col-md-4">
-                            <label>Primer apellido: <code>*</code></label>
-                            <input type="text" class="form-control form-control-border" name="nuevoApellido1" required>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label>Segundo apellido: <code></code></label>
-                            <input type="text" class="form-control form-control-border" name="nuevoApellido2">
-                        </div>
-
-                        <div class="col-md-4">
                             <label>Nombre: <code>*</code></label>
                             <input type="text" class="form-control form-control-border" name="nuevoNombre" required>
                         </div>
+
+
 
                         <!--REFERENCIA-->
                         <div class="col-md-4">
@@ -136,39 +139,23 @@
                                 oninput="this.value = this.value.toUpperCase()" required>
                         </div>
 
+
+
+
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Forma de pago por defecto: <code>*</code></label>
+                                <label>Forma de Pago por Defecto: <code>*</code></label>
                                 <select class="form-control-boder select2 select2-danger"
-                                    data-dropdown-css-class="select2-danger" name="nuevoPagoDefecto">
-                                    <option selected>Seleccionar si por el momento no se tiene el dato</option>
-                                    <option value="01-Efectivo">01-Efectivo</option>
-                                    <option value="02-Cheque nominativo">02-Cheque nominativo</option>
-                                    <option value="03-Transferencia electrónica de fondos">03-Transferencia
-                                        electrónica de fondos</option>
-                                    <option value="04-Tarjeta de crédito">04-Tarjeta de crédito</option>
-                                    <option value="05-Monedero electrónico">05-Monedero electrónico</option>
-                                    <option value="06-Dinero electrónico">06-Dinero electrónico</option>
-                                    <option value="08-Vales de despensa">08-Vales de despensa</option>
-                                    <option value="12-Dación en pago">12-Dación en pago</option>
-                                    <option value="13-Pago por subrogación">13-Pago por subrogación</option>
-                                    <option value="14-Pago por consignación">14-Pago por consignación</option>
-                                    <option value="15-Condonación">15-Condonación</option>
-                                    <option value="17-Compensación">17-Compensación</option>
-                                    <option value="23-Novación">23-Novación</option>
-                                    <option value="24-Confusión">24-Confusión</option>
-                                    <option value="25-Remisión de deuda">25-Remisión de deuda</option>
-                                    <option value="26-Prescripción o caducidad">26-Prescripción o caducidad</option>
-                                    <option value="27-A satisfacción del acreedor">27-A satisfacción del acreedor
-                                    </option>
-                                    <option value="28-Tarjeta de débito">28-Tarjeta de débito</option>
-                                    <option value="29-Tarjeta de servicios">29-Tarjeta de servicios</option>
-                                    <option value="30-Aplicación de anticipos">30-Aplicación de anticipos</option>
-                                    <option value="99-Por definir">99-Por definir</option>
+                                    data-dropdown-css-class="select2-danger" name="nuevoPerfil">
+                                    <option selected>Seleccionar perfil</option>
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Ventas">Ventas</option>
+                                    <option value="Especial">Especial</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+
 
 
 
@@ -181,27 +168,31 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Banco: <code>*</code></label>
-                                <select class="custom-select form-control-border select2 select2-danger"
-                                    data-dropdown-css-class="select2-danger" style="width: 100%;"> name="nuevoBanco">
-                                    <option value="Azteca">Azteca</option>
-                                    <option value="Afirme">Afirme</option>
-                                    <option value="Banamex">Banamex</option>
-                                    <option value="BanBajio">BanBajio</option>
-                                    <option value="Banco del Bajio">Banco del Bajio</option>
-                                    <option value="BBVA">BBVA</option>
-                                    <option value="Citibanamex">Citibanamex</option>
-                                    <option value="Famsa">Famsa</option>
-                                    <option value="HSBC">HSBC</option>
-                                    <option value="Inbursa">Inbursa</option>
-                                    <option value="Interacciones">Interacciones</option>
-                                    <option value="IXE">IXE</option>
-                                    <option value="Mercantil del Norte">Mercantil del Norte</option>
-                                    <option value="Multiva">Multiva</option>
-                                    <option value="Santander">Santander</option>
-                                    <option value="Scotiabank">Scotiabank</option>
-                                    <option value="Ve por Más">Ve por Más</option>
-                                    <option value="Sin banco" selected>Sin banco</option>
+                                <select class="form-control-boder select2 select2-danger"
+                                    data-dropdown-css-class="select2-danger" name="nuevoBanco">
+                                    <option selected>Seleccionar</option>
+                                    <option value="Sin banco">Sin banco</option>
+
+                                    <?php
+// Realiza la consulta a la base de datos para obtener los bancos
+$query = "SELECT * FROM bancos";
+$result = $db->query($query);
+
+// Comprueba si la consulta devolvió algún resultado
+if ($result->rowCount() > 0) {
+    // Si hay resultados, recórrelos y genera las opciones del select
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="' . $row['id'] . '">' . $row['nombre'] . '</option>';
+    }
+} else {
+    // Si no hay resultados, muestra un mensaje de error
+    echo '<option>No se encontraron bancos</option>';
+}
+?>
+
+
                                 </select>
+
                             </div>
                         </div>
 
@@ -239,7 +230,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" class="form-control form-control-border"
+                                <input type="number" value="0" class="form-control form-control-border"
                                     name="nuevoCreditoDisponible">
                             </div>
                         </div>
@@ -255,7 +246,8 @@
                     <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-light custom-switch-on-success">
                             <input type="checkbox" class="custom-control-input" id="nuevoGenerar" name="nuevoGenerar">
-                            <label class="custom-control-label" for="nuevoGenerar">Permitir generar órdenes de compra
+                            <label class="custom-control-label" for="nuevoGenerar">Permitir generar órdenes de
+                                compra
                                 desde el POS</label>
                         </div>
                     </div>
@@ -474,36 +466,39 @@
                                 <select class="form-control-boder select2 select2-danger"
                                     data-dropdown-css-class="select2-danger" name="editarPagoDefecto"
                                     id="editarPagoDefecto">
-                                    <option selected>Seleccionar</option>
-                                    <option value="01-Efectivo">01-Efectivo</option>
-                                    <option value="02-Cheque nominativo">02-Cheque nominativo</option>
-                                    <option value="03-Transferencia electrónica de fondos">03-Transferencia
-                                        electrónica de fondos</option>
-                                    <option value="04-Tarjeta de crédito">04-Tarjeta de crédito</option>
-                                    <option value="05-Monedero electrónico">05-Monedero electrónico</option>
-                                    <option value="06-Dinero electrónico">06-Dinero electrónico</option>
-                                    <option value="08-Vales de despensa">08-Vales de despensa</option>
-                                    <option value="12-Dación en pago">12-Dación en pago</option>
-                                    <option value="13-Pago por subrogación">13-Pago por subrogación</option>
-                                    <option value="14-Pago por consignación">14-Pago por consignación</option>
-                                    <option value="15-Condonación">15-Condonación</option>
-                                    <option value="17-Compensación">17-Compensación</option>
-                                    <option value="23-Novación">23-Novación</option>
-                                    <option value="24-Confusión">24-Confusión</option>
-                                    <option value="25-Remisión de deuda">25-Remisión de deuda</option>
-                                    <option value="26-Prescripción o caducidad">26-Prescripción o caducidad</option>
-                                    <option value="27-A satisfacción del acreedor">27-A satisfacción del acreedor
-                                    </option>
-                                    <option value="28-Tarjeta de débito">28-Tarjeta de débito</option>
-                                    <option value="29-Tarjeta de servicios">29-Tarjeta de servicios</option>
-                                    <option value="30-Aplicación de anticipos">30-Aplicación de anticipos</option>
-                                    <option value="99-Por definir">99-Por definir</option>
+                                    <option selected>Seleccionar si por el momento no se tiene el dato</option>
+
+                                    <?php
+
+                            // Realiza la consulta a la base de datos para obtener las formas de pago
+                            $query = "SELECT * FROM sat_formapago";
+                            $result = $db->query($query);
+
+                            // Comprueba si la consulta devolvió algún resultado
+                            if ($result->rowCount() > 0) {
+                                // Si hay resultados, recórrelos y genera las opciones del select
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                    echo '<option value="' . $row['clave'] . '">' . $row['descripcion'] . '</option>';
+                                }
+                            } else {
+                                // Si no hay resultados, muestra un mensaje de error
+                                echo '<option>No se encontraron formas de pago</option>';
+                            }
+                            ?>
+
                                 </select>
                             </div>
                         </div>
                     </div>
 
+
+
+
+
                     <div class="form-group row">
+
+
+
 
                         <div class="col-md-3">
                             <div class="form-group">
@@ -512,29 +507,29 @@
                                     data-dropdown-css-class="select2-danger" name="editarBanco" id="editarBanco">
                                     <option selected>Seleccionar</option>
                                     <option value="Sin banco">Sin banco</option>
-                                    <option value="BBVA">BBVA</option>
-                                    <option value="Banamex">Banamex</option>
-                                    <option value="BanBajio">BanBajio</option>
-                                    <option value="Banca Afirme">Banca Afirme</option>
-                                    <option value="Banco Azteca">Banco Azteca</option>
-                                    <option value="Banco del Bajio">Banco del Bajio</option>
-                                    <option value="Banco Famsa">Banco Famsa</option>
-                                    <option value="Banco Inbursa">Banco Inbursa</option>
-                                    <option value="Banco Interacciones">Banco Interacciones</option>
-                                    <option value="Banco Mercantil del Norte">Banco Mercantil del Norte</option>
-                                    <option value="Banco Multiva">Banco Multiva</option>
-                                    <option value="Banco Santander">Banco Santander</option>
-                                    <option value="Banco Ve por Más">Banco Ve por Más</option>
-                                    <option value="Banorte">Banorte</option>
-                                    <option value="Citibanamex">Citibanamex</option>
-                                    <option value="HSBC">HSBC</option>
-                                    <option value="IXE">IXE</option>
-                                    <option value="Santander">Santander</option>
-                                    <option value="Scotiabank">Scotiabank</option>
+
+                                    <?php
+// Realiza la consulta a la base de datos para obtener los bancos
+$query = "SELECT * FROM bancos";
+$result = $db->query($query);
+
+// Comprueba si la consulta devolvió algún resultado
+if ($result->rowCount() > 0) {
+    // Si hay resultados, recórrelos y genera las opciones del select
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="' . $row['id'] . '">' . $row['nombre'] . '</option>';
+    }
+} else {
+    // Si no hay resultados, muestra un mensaje de error
+    echo '<option>No se encontraron bancos</option>';
+}
+?>
+
+
                                 </select>
+
                             </div>
                         </div>
-
                         <div class="col-md-3">
                             <label>Número de cuenta: <code></code></label>
                             <input type="text" oninput="this.value = this.value.toUpperCase()"
@@ -569,7 +564,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" class="form-control form-control-border"
+                                <input type="number" value="0" class="form-control form-control-border"
                                     name="editarCreditoDisponible" id="editarCreditoDisponible">
                             </div>
                         </div>
@@ -585,7 +580,8 @@
                     <div class="form-group">
                         <div class="custom-control custom-switch custom-switch-off-light custom-switch-on-success">
                             <input type="checkbox" class="custom-control-input" id="editarGenerar" name="editarGenerar">
-                            <label class="custom-control-label" for="editarGenerar">Permitir generar órdenes de compra
+                            <label class="custom-control-label" for="editarGenerar">Permitir generar órdenes de
+                                compra
                                 desde el POS</label>
                         </div>
                     </div>

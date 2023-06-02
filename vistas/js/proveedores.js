@@ -26,8 +26,8 @@ $(".btnEditarProveedor").click(function(){
              $('#editarNombre').val(respuesta["nombre"]);
              $('#editarReferencia').val(respuesta["referencia"]);
              $('#editarRFC').val(respuesta["rfc"]);
-             $('#editarPagoDefecto').val(respuesta["pagoDefecto"]).trigger('change');
-             $('#editarBanco').val(respuesta["banco"]).trigger('change');             
+             $('#editarPagoDefecto').val(respuesta["formaPagoId"]).trigger('change');
+             $('#editarBanco').val(respuesta["bancoId"]).trigger('change');             
              $('#editarCuenta').val(respuesta["numeroCuenta"]);
              $('#editarDiasCredito').val(respuesta["diasCredito"]);
              $('#editarCLABE').val(respuesta["clabe"]);

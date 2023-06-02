@@ -48,7 +48,7 @@
                       </thead>
 
                       <tbody>
-                      <?php
+                          <?php
          $item=null;
          $valor=null; 
          $familias=ControladorFamilias::ctrMostrarFamilias($item,$valor);
@@ -99,7 +99,8 @@
                       <!--SELECCIONAR DEPARTAMENTOS-->
                       <div class="form-group">
                           <label>Seleccionar departamento <code>*</code></label>
-                          <select class="custom-select form-control-border border-width-2" name="nuevoDepartamentoID">
+                          <select class="form-control-boder select2 select2-danger"
+                              data-dropdown-css-class="select2-danger" name="nuevoDepartamentoID">
                               <option value="">Lista de departamentos</option>
                               <?php
                               $item = null;
@@ -110,10 +111,10 @@
                                   echo '<option value="'.$value["id"].'">'.$value["departamento"].'</option>';
                               }
                               ?>
-                            </select>
-                        </div>
+                          </select>
+                      </div>
 
-                            <!--ENTRADA PARA EL NOMBRE-->
+                      <!--ENTRADA PARA EL NOMBRE-->
                       <div class="form-group">
                           <label>Nombre: <code>*</code></label>
                           <input type="text" class="form-control form-control-border" name="nuevaFamilia" required>
@@ -159,7 +160,9 @@
                       <!--SELECCIONAR DEPARTAMENTOS-->
                       <div class="form-group">
                           <label>Seleccionar departamento <code>*</code></label>
-                          <select class="custom-select form-control-border border-width-2" name="editarDepartamentoID" id="editarDepartamentoID">
+                          <select class="form-control-boder select2 select2-danger"
+                              data-dropdown-css-class="select2-danger" name="editarDepartamentoID"
+                              id="editarDepartamentoID">
                               <option value="">Lista de departamentos</option>
                               <?php
                               $item = null;
@@ -170,20 +173,22 @@
                                   echo '<option value="'.$value["id"].'">'.$value["departamento"].'</option>';
                               }
                               ?>
-                            </select>
-                        </div>
+                          </select>
+                      </div>
 
-                            <!--ENTRADA PARA EL NOMBRE-->
+                      <!--ENTRADA PARA EL NOMBRE-->
                       <div class="form-group">
                           <label>Nombre: <code>*</code></label>
-                          <input type="text" class="form-control form-control-border" name="editarFamilia" id="editarFamilia" required>
-                          
+                          <input type="text" class="form-control form-control-border" name="editarFamilia"
+                              id="editarFamilia" required>
+
                       </div>
 
                       <!--ENTRADA PARA DESCRIPCIÓN-->
                       <div class="form-group">
                           <label>Descripción: <code></code></label>
-                          <input type="text" class="form-control form-control-border" name="editarDescripcion" id="editarDescripcion">
+                          <input type="text" class="form-control form-control-border" name="editarDescripcion"
+                              id="editarDescripcion">
                       </div>
 
 

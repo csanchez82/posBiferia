@@ -10,7 +10,7 @@ $(document).ready(function() {
         }
         
         $.ajax({
-            url: 'ajax/ajas.obtenerFamilias.php', // Cambia esto a la ruta de tu script PHP
+            url: 'ajax/ajax.obtenerFamilias.php', // Cambia esto a la ruta de tu script PHP
             type: 'GET',
             data: { departamento_id: departamentoId },
             success: function(response) {
